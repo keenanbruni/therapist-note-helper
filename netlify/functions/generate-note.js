@@ -1,3 +1,8 @@
+const OpenAI = require('openai');
+
+const openai = new OpenAI({
+    apiKey: process.env.OPENAI_API_KEY
+});
 
 exports.handler = async function(event, context) {
     if (event.httpMethod !== 'POST') {
@@ -10,39 +15,33 @@ exports.handler = async function(event, context) {
     try {
         const { topics, modalities } = JSON.parse(event.body);
 
-        // Generate the note based on selected topics and modalities
-        const noteText = generateNoteText(topics, modalities);
+        const prompt = `Generate a professional therapist session note. 
+Topics discussed: ${topics.map(t => formatTopic(t)).join(', ')}
+Modalities used: ${modalities.map(m => formatModality(m)).join(', ')}
+Keep the note concise, professional, and HIPAA-compliant. Do not include any specific client details.`;
+
+        const completion = await openai.chat.completions.create({
+            model: "gpt-3.5-turbo",
+            messages: [
+                {"role": "system", "content": "You are a professional therapist writing session notes."},
+                {"role": "user", "content": prompt}
+            ],
+            max_tokens: 200,
+            temperature: 0.7,
+        });
 
         return {
             statusCode: 200,
-            body: JSON.stringify({ note: noteText })
+            body: JSON.stringify({ note: completion.choices[0].message.content.trim() })
         };
     } catch (error) {
+        console.error('Error:', error);
         return {
             statusCode: 500,
             body: JSON.stringify({ error: 'Error generating note' })
         };
     }
 };
-
-function generateNoteText(topics, modalities) {
-    let noteText = 'Session focused on ';
-
-    // Add topics
-    if (topics.length > 0) {
-        noteText += topics.map(topic => formatTopic(topic)).join(', ');
-    }
-
-    // Add modalities
-    if (modalities.length > 0) {
-        noteText += '. Utilized ';
-        noteText += modalities.map(modality => formatModality(modality)).join(' and ');
-        noteText += ' techniques';
-    }
-
-    noteText += ' during the session.';
-    return noteText;
-}
 
 function formatTopic(topic) {
     return topic.split('-')
