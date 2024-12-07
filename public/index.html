@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Therapist Note Helper</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Therapist Note Helper</h1>
+        
+        <section class="topics-section">
+            <h2>Topics Discussed</h2>
+            <div class="checkbox-group" id="topics">
+                <label><input type="checkbox" value="interpersonal-conflicts"> Interpersonal Conflicts</label>
+                <label><input type="checkbox" value="work-stress"> Work Stress</label>
+                <label><input type="checkbox" value="health-stress"> Health Stress</label>
+                <label><input type="checkbox" value="financial-stress"> Financial Stress</label>
+                <label><input type="checkbox" value="family-issues"> Family Issues</label>
+            </div>
+        </section>
+
+        <section class="modality-section">
+            <h2>Modality/Intervention</h2>
+            <div class="checkbox-group" id="modalities">
+                <label><input type="checkbox" value="cbt"> Cognitive Behavioral Therapy (CBT)</label>
+                <label><input type="checkbox" value="dbt"> Dialectical Behavior Therapy (DBT)</label>
+                <label><input type="checkbox" value="act"> Acceptance and Commitment Therapy (ACT)</label>
+            </div>
+        </section>
+
+        <button id="generate-note" class="generate-btn">Generate Note</button>
+        <div id="result" class="result-area"></div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
