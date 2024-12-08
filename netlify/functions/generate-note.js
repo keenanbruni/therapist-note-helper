@@ -53,7 +53,8 @@ function formatModality(modality) {
     const modalityMap = {
         'cbt': 'Cognitive Behavioral Therapy',
         'dbt': 'Dialectical Behavior Therapy',
-        'act': 'Acceptance and Commitment Therapy'
+        'act': 'Acceptance and Commitment Therapy',
+        'motivational-interviewing': 'Motivational Interviewing'
     };
     return modalityMap[modality] || modality;
 }
