@@ -21,7 +21,7 @@ Modalities used: ${modalities.map(m => formatModality(m)).join(', ')}
 Keep the note concise, professional, and HIPAA-compliant. Do not include any specific client details.`;
 
         const completion = await openai.chat.completions.create({
-            model: "gpt-3.5-turbo",
+            model: 'gpt-4o-mini', // always should be 4o mini
             messages: [
                 {"role": "system", "content": "You are a professional therapist writing session notes."},
                 {"role": "user", "content": prompt}
