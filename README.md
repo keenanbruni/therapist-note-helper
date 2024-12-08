@@ -54,4 +54,6 @@ If you encounter any issues or have questions, please contact [Your Contact Info
 
 This tool is designed to assist with note-taking efficiency but should not replace professional judgment. Always review and modify generated notes to ensure they accurately reflect your session and meet all clinical and legal requirements.
 
+## Screenshot
+
 ![Screenshot](https://i.imgur.com/GOcm03L.png)
