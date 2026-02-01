@@ -46,10 +46,6 @@ This note generator helps you:
 - Use as a starting point, not a final document
 - Customize notes based on your therapeutic approach
 
-## Support
-
-If you encounter any issues or have questions, please contact [Your Contact Info].
-
 ## Disclaimer
 
 This tool is designed to assist with note-taking efficiency but should not replace professional judgment. Always review and modify generated notes to ensure they accurately reflect your session and meet all clinical and legal requirements.
